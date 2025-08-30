@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>.OKB Name | XLayer链首个去中心化DID</title>
+    <link href="https://s2.ssl.qhres2.com/static/56662140ef7d5d03.css" rel="stylesheet">
+    <link href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-100-M/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1A1A2E;
+            --secondary: #16213E;
+            --accent: #0F52BA;
+            --light: #E6E6E6;
+            --highlight: #00D1FF;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--primary);
+            color: var(--light);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--highlight);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 2.5rem;
+        }
+        
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            background: radial-gradient(circle at 20% 50%, rgba(16, 20, 36, 0.8) 0%, var(--primary) 70%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            background: linear-gradient(to right, var(--highlight), #fff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, var(--accent), var(--highlight));
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 10px 20px rgba(0, 209, 255, 0.2);
+            text-decoration: none;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 209, 255, 0.3);
+        }
+        
+        .feature-section {
+            padding: 5rem 0;
+            background-color: var(--secondary);
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--accent), var(--highlight));
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .comparison {
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 16px;
+            padding: 40px;
+            margin-top: 50px;
+        }
+        
+        .comparison-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: var(--light);
+            text-align: center;
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .comparison-item {
+            background: rgba(30, 64, 175, 0.1);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+        
+        .coin-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        
+        .coin-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--light);
+        }
+        
+        .comparison-section {
+            padding: 5rem 0;
+            background-color: var(--primary);
+        }
+        
+        .pricing-section {
+            padding: 5rem 0;
+            background: linear-gradient(to bottom, var(--secondary), var(--primary));
+        }
+        
+        .pricing-cards {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+        
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            width: 300px;
+            text-align: center;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .pricing-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 209, 255, 0.2);
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 1rem 0;
+            color: var(--highlight);
+        }
+        
+        .price-period {
+            font-size: 1rem;
+            opacity: 0.7;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+        
+        .pricing-features li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .pricing-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--highlight);
+        }
+        
+        .mint-section {
+            padding: 5rem 0;
+            background-color: var(--secondary);
+        }
+        
+        .mint-form {
+            margin-top: 2rem;
+        }
+        
+        .mint-form input {
+            width: 100%;
+            padding: 1rem;
+            margin: 1rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--light);
+            font-size: 1rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .mint-form input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .output-box {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 1rem 0;
+            word-break: break-all;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .output-box label {
+            display: block;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            color: var(--light);
+        }
+        
+        .status {
+            font-size: 0.9rem;
+            color: var(--light);
+            margin-top: 1rem;
+        }
+        
+        .wallet-info {
+            color: var(--highlight);
+            font-weight: 600;
+        }
+        
+        .faq-section {
+            padding: 5rem 0;
+            background-color: var(--secondary);
+        }
+        
+        .faq-item {
+            margin-bottom: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+        
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding-bottom: 1.5rem;
+        }
+        
+        .faq-toggle {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+        
+        footer {
+            background-color: var(--primary);
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 1rem;
+        }
+        
+        .footer-text {
+            opacity: 0.7;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-link {
+            color: var(--light);
+            transition: var(--transition);
+            opacity: 0.7;
+            text-decoration: none;
+        }
+        
+        .footer-link:hover {
+            opacity: 1;
+            color: var(--highlight);
+        }
+        
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .social-icon {
+            font-size: 1.5rem;
+            color: var(--light);
+            transition: var(--transition);
+            opacity: 0.7;
+        }
+        
+        .social-icon:hover {
+            color: var(--highlight);
+            opacity: 1;
+            transform: translateY(-3px);
+        }
+        
+        .social-icon-link {
+            display: inline-block;
+            color: var(--light);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .social-icon-link:hover {
+            color: var(--highlight);
+            transform: translateY(-3px);
+        }
+        
+        .disclaimer {
+            font-size: 10pt;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        /* Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hand-drawn {
+            position: absolute;
+            opacity: 0.05;
+            z-index: 1;
+        }
+        
+        .hd-1 {
+            top: 10%;
+            left: 5%;
+            font-size: 10rem;
+            transform: rotate(-15deg);
+        }
+        
+        .hd-2 {
+            bottom: 10%;
+            right: 5%;
+            font-size: 8rem;
+            transform: rotate(10deg);
+        }
+        
+        .glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 209, 255, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="glow"></div>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-globe"></i>
+                    .OKB 
+                </div>
+                <button class="cta-button">立即注册</button>
+            </div>
+        </div>
+        <div class="hand-drawn hd-1">OKB</div>
+        <div class="hand-drawn hd-2">XLayer</div>
+    </header>
+    
+    <section class="hero">
+        <div class="glow"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>开启去中心化身份的新时代</h1>
+                <p class="subtitle">.OKB 是 XLayer 链首个DID后缀，为您提供完全去中心化的数字身份解决方案</p>
+                <button class="cta-button">获取您的.OKB Name</button>
+            </div>
+        </div>
+    </section>
+    
+    <section class="feature-section">
+        <div class="container">
+            <h2 class="section-title">为何选择.OKB Name</h2>
+            <div class="features-grid">
+                <div class="feature-card floating">
+                    <div class="feature-icon"><i class="fas fa-unlock-alt"></i></div>
+                    <h3 class="feature-title">完全去中心化</h3>
+                    <p>没有中心化控制，没有项目方干预，真正的Web3.0体验，您的.OKB Name完全由您掌控。</p>
+                </div>
+                <div class="feature-card floating" style="animation-delay: 0.5s;">
+                    <div class="feature-icon"><i class="fas fa-wallet"></i></div>
+                    <h3 class="feature-title">超低Gas费用</h3>
+                    <p>注册费用低至0.01USDT，远低于其他区块链DID的注册成本，让更多人能够轻松拥有。</p>
+                </div>
+                <div class="feature-card floating" style="animation-delay: 1s;">
+                    <div class="feature-icon"><i class="fas fa-infinity"></i></div>
+                    <h3 class="feature-title">永久所有权</h3>
+                    <p>一次注册，永久拥有，无需续费，您的.OKB Name将永远属于您。</p>
+                </div>
+                <div class="feature-card floating" style="animation-delay: 1.5s;">
+                    <div class="feature-icon"><i class="fas fa-exchange-alt"></i></div>
+                    <h3 class="feature-title">链上跨币转账</h3>
+                    <p>支持多种加密货币的链上直接转账，简化您的加密交易流程。</p>
+                </div>
+                <div class="feature-card floating" style="animation-delay: 2s;">
+                    <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                    <h3 class="feature-title">XLayer生态Gas</h3>
+                    <p>作为OKEX交易所平台币和XLayer链生态Gas币，.OKB Name深度整合生态优势。</p>
+                </div>
+                <div class="feature-card floating" style="animation-delay: 2.5s;">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3 class="feature-title">安全可靠</h3>
+                    <p>基于区块链技术，提供不可篡改的记录和所有权证明，保障您的数字资产安全。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="comparison-section">
+        <div class="container">
+            <div class="comparison">
+                <h3 class="section-title">与主流数字货币对比</h3>
+                <div class="comparison-grid">
+                    <div class="comparison-item animate-fade-in">
+                        <div class="coin-icon"><i class="fab fa-bitcoin"></i></div>
+                        <h4 class="coin-name">比特币 (BTC)</h4>
+                        <p class="coin-desc">数字黄金，价值存储首选，但交易速度慢，手续费高，不支持智能合约。</p>
+                    </div>
+                    <div class="comparison-item animate-fade-in delay-1">
+                        <div class="coin-icon"><i class="fab fa-ethereum"></i></div>
+                        <h4 class="coin-name">以太坊 (ETH)</h4>
+                        <p class="coin-desc">智能合约平台，生态丰富，但Gas费波动大</p>
+                    </div>
+                    <div class="comparison-item animate-fade-in delay-2">
+                        <div class="coin-icon"><i class="fas fa-link"></i></div>
+                        <h4 class="coin-name">OKB (.OKB域名)</h4>
+                        <p class="coin-desc">XLayer链原生Gas币，支持.OKB域名服务，交易快速，费用低廉，与OKEX生态深度整合。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="pricing-section">
+        <div class="container">
+            <h2 class="section-title">.OKB NAME 推荐</h2>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>4D</h3>
+                    <div class="price">$议价 <span class="price-period">永久</span></div>
+                    <ul class="pricing-features">
+                        <li>稀有短域名</li>
+                        <li>完全所有权</li>
+                        <li>优先支持</li>
+                    </ul>
+                    <button class="cta-button" onclick="window.open('https://x.com/CaifuEth', '_blank')">X</button>
+                </div>
+                <div class="pricing-card" style="transform: scale(1.05); background: rgba(0, 209, 255, 0.1);">
+                    <h3>3D</h3>
+                    <div class="price">$议价 <span class="price-period">永久</span></div>
+                    <ul class="pricing-features">
+                        <li>优质域名</li>
+                        <li>完全所有权</li>
+                        <li>优先支持</li>
+                    </ul>
+                    <button class="cta-button" onclick="window.open('https://x.com/CaifuEth', '_blank')" style="background: linear-gradient(45deg, var(--highlight), #00a2ff);">X</button>
+                </div>
+                <div class="pricing-card">
+                    <h3>单词</h3>
+                    <div class="price">$议价 <span class="price-period">永久</span></div>
+                    <ul class="pricing-features">
+                        <li>经济实惠</li>
+                        <li>完全所有权</li>
+                        <li>优先支持</li>
+                    </ul>
+                    <button class="cta-button" onclick="window.open('https://x.com/CaifuEth', '_blank')">X</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="mint-section">
+        <div class="container">
+            <h2 class="section-title">铸造您的.OKB域名</h2>
+            <div class="feature-card" style="max-width: 600px; margin: 0 auto;">
+                <div class="wallet-connect">
+                    <button id="connectButton" class="cta-button">连接钱包</button>
+                    <p class="status">钱包地址: <span id="walletAddress" class="wallet-info">未连接</span></p>
+                    <div id="networkStatus" class="status">点击连接钱包...</div>
+                </div>
+                <div class="mint-form">
+                    <input type="text" id="domainId" placeholder="输入域名ID（例如：jace123）" oninput="convertToHex()">
+                    <div class="output-box">
+                        <label>Hex 数据</label>
+                        <span id="hexOutputText">请输入域名以查看 Hex 数据</span>
+                    </div>
+                    <button id="copyHexButton" class="cta-button" disabled>复制 Hex 数据</button>
+                    <div class="output-box">
+                        <label>合约地址</label>
+                        <span id="contractAddress">0xBf13Ed020DCF22bc8216A23A1167A5dD1fDC2D0E</span>
+                    </div>
+                    <button id="copyAddressButton" class="cta-button">复制合约地址</button>
+                    <button id="mintDomain" class="cta-button">铸造.OKB域名NFT</button>
+                    <div id="mintStatus" class="status"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">关于.OKB的常见问题</h2>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>什么是.OKB域名？</span>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>.OKB是XLayer链上的首个域名后缀，作为去中心化身份解决方案，它可以替代复杂的区块链地址，让您用简单易记的.OKB域名接收加密货币付款、访问去中心化应用等。</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>为什么.OKB比.ETH和.BTC更好？</span>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>.OKB提供了更低的注册费用(0.01USDT起)、永久免费的拥有权、完整的去中心化以及深度整合OKEX和XLayer生态的优势。相比之下，.ETH和.BTC域名通常需要更高的费用和定期续费。</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>如何注册.OKB域名？</span>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>注册.OKB域名非常简单：1) 连接您的加密货币钱包 2) 搜索您想要的域名 3) 确认可用后支付极低的Gas费用 4) 完成注册并获得永久所有权。</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>.OKB域名有哪些用途？</span>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>.OKB域名可以用于：简化加密支付地址、作为去中心化身份、访问DApps、托管去中心化网站、NFT身份验证等多种Web3.0应用场景。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta-section">
+        <div class="container">
+            <div style="text-align: center; padding: 5rem 0; background: linear-gradient(135deg, var(--accent), var(--highlight)); border-radius: 15px;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">准备好拥有您的.OKB域名了吗？</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">立即注册您独一无二的.OKB域名，开启去中心化身份的新篇章。</p>
+                <button class="cta-button" style="background: white; color: var(--accent);">立即注册</button>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-logo">.OKB</div>
+            <p class="footer-text">XLayer链首个域名后缀，为您提供完全去中心化的数字身份解决方案。</p>
+            <div class="footer-links">
+                <span class="footer-link">关于我们</span>
+                <span class="footer-link">常见问题</span>
+                <span class="footer-link">开发者文档</span>
+                <span class="footer-link">联系我们</span>
+            </div>
+            <div class="footer-social">
+                <a href="https://x.com/okbdomainname" target="_blank" class="social-icon-link">
+                    <i class="fab fa-twitter social-icon"></i>
+                </a>
+                <a href="https://t.me/OKBdomainGroup" target="_blank" class="social-icon-link">
+                    <i class="fab fa-telegram social-icon"></i>
+                </a>
+                <a href="https://twitter.com/example" target="_blank" class="social-icon-link">
+                    <i class="fab fa-github social-icon"></i>
+                </a>
+                <a href="https://twitter.com/example" target="_blank" class="social-icon-link">
+                    <i class="fab fa-discord social-icon"></i>
+                </a>
+            </div>
+            <div class="disclaimer">以上内容仅供参考</div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.7.0/dist/web3.min.js"></script>
+    <script>
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentNode;
+                item.classList.toggle('active');
+            });
+        });
+
+        // Scroll animation
+        const observerOptions = {
+            threshold: 0.1
+        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.feature-card, .pricing-card, .section-title').forEach(element => {
+            element.style.opacity = 0;
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(element);
+        });
+
+        // Minting functionality
+        let web3, accounts, domainContract;
+        const okbContract = {
+            address: '0xBf13Ed020DCF22bc8216A23A1167A5dD1fDC2D0E',
+            suffix: 'okb',
+            protocol: 'okbname',
+            currency: 'OKB',
+            name: 'OKB Inscription Domain Name',
+            symbol: 'DOKB'
+        };
+        const domainContractABI = [
+            {"inputs":[{"internalType":"string","name":"_id","type":"string"}],"name":"mint","outputs":[],"stateMutability":"nonpayable","type":"function"},
+            {"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"approve","outputs":[],"stateMutability":"nonpayable","type":"function"},
+            {"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"getApproved","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},
+            {"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"minter","type":"address"},{"indexed":false,"internalType":"uint256","name":"tokenId","type":"uint256"},{"indexed":false,"internalType":"string","name":"id","type":"string"}],"name":"Minted","type":"event"},
+            {"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"tokenName","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},
+            {"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"tokenURI","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},
+            {"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"uint256","name":"index","type":"uint256"}],"name":"tokenOfOwnerByIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
+            {"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
+            {"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},
+            {"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},
+            {"inputs":[],"name":"SUFFIX","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},
+            {"inputs":[{"internalType":"string","name":"","type":"string"}],"name":"idsMintedLower","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},
+            {"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
+            {"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"ownerToTokenId","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}
+        ];
+        const xLayer = {
+            chainId: 196,
+            name: 'X Layer mainnet',
+            explorerUrl: 'https://www.okx.com/web3/explorer/xlayer',
+            rpcUrl: 'https://rpc.xlayer.tech'
+        };
+
+        async function connectWallet() {
+            const status = document.getElementById('networkStatus');
+            try {
+                if (!window.ethereum) {
+                    status.innerHTML = '未检测到钱包，请安装 <a href="https://metamask.io" target="_blank">MetaMask</a>。';
+                    throw new Error("未检测到钱包");
+                }
+                status.innerText = "正在连接...";
+                web3 = new Web3(window.ethereum);
+                accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                if (!accounts.length) throw new Error("请解锁您的钱包或连接钱包。");
+                const chainId = await web3.eth.getChainId();
+                if (chainId !== 196) {
+                    try {
+                        await window.ethereum.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: '0xc4' }] });
+                    } catch (switchError) {
+                        if (switchError.code === 4902) {
+                            await window.ethereum.request({
+                                method: 'wallet_addEthereumChain',
+                                params: [{
+                                    chainId: '0xc4',
+                                    chainName: 'X Layer mainnet',
+                                    nativeCurrency: { name: 'OKB', symbol: 'OKB', decimals: 18 },
+                                    rpcUrls: ['https://rpc.xlayer.tech'],
+                                    blockExplorerUrls: ['https://www.okx.com/web3/explorer/xlayer']
+                                }]
+                            });
+                        } else throw switchError;
+                    }
+                }
+                document.getElementById('walletAddress').innerText = `${accounts[0].slice(0, 6)}...${accounts[0].slice(-4)}`;
+                domainContract = new web3.eth.Contract(domainContractABI, okbContract.address);
+                status.innerText = "已连接到 X Layer";
+            } catch (error) {
+                console.error(error);
+                status.innerText = "连接失败: " + error.message;
+            }
+        }
+
+        function isValidString(str) {
+            const strBytes = new TextEncoder().encode(str);
+            if (strBytes.length === 0 || strBytes.length > 15) return false;
+            for (let i = 0; i < strBytes.length; i++) {
+                const char = strBytes[i];
+                if (!(char >= 48 && char <= 57) && !(char >= 65 && char <= 90) && !(char >= 97 && char <= 122)) return false;
+            }
+            return true;
+        }
+
+        function convertToHex() {
+            const input = document.getElementById('domainId').value.trim();
+            const output = document.getElementById('hexOutputText');
+            const status = document.getElementById('mintStatus');
+            const copyHexButton = document.getElementById('copyHexButton');
+
+            if (!input) {
+                output.textContent = '请输入域名以查看 Hex 数据';
+                output.dataset.hex = '';
+                status.textContent = '';
+                copyHexButton.disabled = true;
+                return;
+            }
+
+            if (!isValidString(input)) {
+                output.textContent = '无效输入：仅限字母和数字，1-15个字符';
+                output.dataset.hex = '';
+                status.textContent = '无效输入';
+                copyHexButton.disabled = true;
+                return;
+            }
+
+            const inscription = `data:,{"p":"${okbContract.protocol}","op":"reg","name":"${input}.${okbContract.suffix}"}`;
+            const hexData = '0x' + Array.from(new TextEncoder().encode(inscription)).map(byte => byte.toString(16).padStart(2, '0')).join('');
+            output.textContent = hexData;
+            output.dataset.hex = hexData;
+            status.textContent = `已生成 ${input}.${okbContract.suffix} 的 Hex 数据`;
+            copyHexButton.disabled = false;
+        }
+
+        function copyToClipboard(type) {
+            const status = document.getElementById('mintStatus');
+            let textToCopy;
+            let sourceElement;
+
+            if (type === 'hex') {
+                sourceElement = document.getElementById('hexOutputText');
+                textToCopy = sourceElement.dataset.hex || '';
+            } else {
+                sourceElement = document.getElementById('contractAddress');
+                textToCopy = sourceElement.textContent;
+            }
+
+            if (!textToCopy || textToCopy === '请输入域名以查看 Hex 数据' || textToCopy === '无效输入：仅限字母和数字，1-15个字符') {
+                status.textContent = `无可复制的${type === 'hex' ? 'Hex 数据' : '合约地址'}`;
+                return;
+            }
+
+            const textArea = document.createElement('textarea');
+            textArea.value = textToCopy;
+            textArea.style.position = 'fixed';
+            textArea.style.opacity = '0';
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                status.textContent = `${type === 'hex' ? 'Hex 数据' : '合约地址'} 已复制到剪贴板`;
+            } catch (error) {
+                console.error(`复制 ${type} 失败:`, error);
+                status.textContent = `无法复制${type === 'hex' ? 'Hex 数据' : '合约地址'}，请手动复制。`;
+            } finally {
+                document.body.removeChild(textArea);
+            }
+        }
+
+        async function mintDomain() {
+            const section = document.getElementById('mintDomain');
+            const status = document.getElementById('mintStatus');
+            const domainId = document.getElementById('domainId').value.trim();
+            if (!domainId || domainId.length > 15 || !/^[a-zA-Z0-9]+$/.test(domainId)) {
+                status.innerText = "无效域名ID，仅限1-15个字母或数字。";
+                return;
+            }
+            if (!accounts) {
+                status.innerText = "请先连接您的钱包！";
+                return;
+            }
+            try {
+                section.classList.add('loading');
+                status.innerText = "正在检查域名可用性...";
+                const domainIdLower = domainId.toLowerCase();
+                const isMinted = await domainContract.methods.idsMintedLower(domainIdLower).call();
+                if (isMinted) {
+                    status.innerText = "此域名ID已被铸造！";
+                    return;
+                }
+                const hasMinted = await domainContract.methods.ownerToTokenId(accounts[0]).call();
+                if (hasMinted != 0) {
+                    status.innerText = "此地址已铸造过一个域名！";
+                    return;
+                }
+                status.innerText = "正在铸造域名NFT...";
+                const gas = await domainContract.methods.mint(domainId).estimateGas({ from: accounts[0] }).catch(() => 600000);
+                const tx = await domainContract.methods.mint(domainId).send({ from: accounts[0], gas: Math.floor(gas * 1.2) });
+                status.innerHTML = `域名铸造成功！Token ID: ${tx.events.Minted.returnValues.tokenId} (<a href="${xLayer.explorerUrl}/token/${okbContract.address}?a=${tx.events.Minted.returnValues.tokenId}" target="_blank">在浏览器查看</a>)`;
+                document.getElementById('domainId').value = '';
+            } catch (error) {
+                console.error(error);
+                status.innerText = "铸造失败: " + (error.message.includes('revert') ? error.message.split('revert')[1]?.trim() || '未知原因' : error.message);
+            } finally {
+                section.classList.remove('loading');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('copyHexButton').disabled = true;
+            document.getElementById('copyAddressButton').disabled = false;
+            document.getElementById('connectButton').addEventListener('click', connectWallet);
+            document.getElementById('mintDomain').addEventListener('click', mintDomain);
+            document.getElementById('copyHexButton').addEventListener('click', () => copyToClipboard('hex'));
+            document.getElementById('copyAddressButton').addEventListener('click', () => copyToClipboard('address'));
+            if (!window.location.protocol.startsWith('http')) {
+                document.getElementById('networkStatus').innerHTML = '请通过本地服务器运行此页面（例如："npx serve"）以连接 MetaMask。';
+            } else if (!window.ethereum) {
+                document.getElementById('networkStatus').innerHTML = '未检测到钱包，请安装 <a href="https://metamask.io">MetaMask</a>。';
+            }
+        });
+    </script>
+</body>
+</html>
