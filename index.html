@@ -6,6 +6,7 @@
     <title>.OKB Name | XLayer链首个去中心化DID</title>
     <link href="https://s2.ssl.qhres2.com/static/56662140ef7d5d03.css" rel="stylesheet">
     <link href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-100-M/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="https://swap.woofingjace.com/image/tokens/OKB.png" type="image/x-icon">
     <style>
         :root {
             --primary: #1A1A2E;
@@ -534,6 +535,11 @@
             pointer-events: none;
             z-index: 0;
         }
+
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
@@ -545,7 +551,7 @@
                     <i class="fas fa-globe"></i>
                     .OKB 
                 </div>
-                <button class="cta-button">立即注册</button>
+                <button class="cta-button" onclick="scrollToMintSection()">立即注册</button>
             </div>
         </div>
         <div class="hand-drawn hd-1">OKB</div>
@@ -558,7 +564,7 @@
             <div class="hero-content">
                 <h1>开启去中心化身份的新时代</h1>
                 <p class="subtitle">.OKB 是 XLayer 链首个DID后缀，为您提供完全去中心化的数字身份解决方案</p>
-                <button class="cta-button">获取您的.OKB Name</button>
+                <button class="cta-button" onclick="scrollToMintSection()">获取您的.OKB Name</button>
             </div>
         </div>
     </section>
@@ -664,7 +670,7 @@
         </div>
     </section>
     
-    <section class="mint-section">
+    <section class="mint-section" id="mint-section">
         <div class="container">
             <h2 class="section-title">铸造您的.OKB域名</h2>
             <div class="feature-card" style="max-width: 600px; margin: 0 auto;">
@@ -739,7 +745,7 @@
             <div style="text-align: center; padding: 5rem 0; background: linear-gradient(135deg, var(--accent), var(--highlight)); border-radius: 15px;">
                 <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">准备好拥有您的.OKB域名了吗？</h2>
                 <p style="font-size: 1.2rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">立即注册您独一无二的.OKB域名，开启去中心化身份的新篇章。</p>
-                <button class="cta-button" style="background: white; color: var(--accent);">立即注册</button>
+                <button class="cta-button" style="background: white; color: var(--accent);" onclick="scrollToMintSection()">立即注册</button>
             </div>
         </div>
     </section>
@@ -761,10 +767,10 @@
                 <a href="https://t.me/OKBdomainGroup" target="_blank" class="social-icon-link">
                     <i class="fab fa-telegram social-icon"></i>
                 </a>
-                <a href="https://twitter.com/example" target="_blank" class="social-icon-link">
+                <a href="https://github.com/WoofingLabs" target="_blank" class="social-icon-link">
                     <i class="fab fa-github social-icon"></i>
                 </a>
-                <a href="https://twitter.com/example" target="_blank" class="social-icon-link">
+                <a href="https://x.com/WoofingJace" target="_blank" class="social-icon-link">
                     <i class="fab fa-discord social-icon"></i>
                 </a>
             </div>
@@ -774,6 +780,14 @@
 
     <script src="https://cdn.jsdelivr.net/npm/web3@1.7.0/dist/web3.min.js"></script>
     <script>
+        // Scroll to mint section
+        function scrollToMintSection() {
+            const mintSection = document.getElementById('mint-section');
+            if (mintSection) {
+                mintSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
         // FAQ toggle functionality
         document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('click', () => {
@@ -782,7 +796,7 @@
             });
         });
 
-        // Scroll animation
+        // Scroll animation for cards and titles
         const observerOptions = {
             threshold: 0.1
         };
@@ -949,7 +963,7 @@
         }
 
         async function mintDomain() {
-            const section = document.getElementById('mintDomain');
+            const section = document.getElementById('mint-section');
             const status = document.getElementById('mintStatus');
             const domainId = document.getElementById('domainId').value.trim();
             if (!domainId || domainId.length > 15 || !/^[a-zA-Z0-9]+$/.test(domainId)) {
